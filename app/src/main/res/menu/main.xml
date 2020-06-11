@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/search_by_location"
+        android:title="Filter by date"
+        app:showAsAction="collapseActionView|ifRoom"
+        android:icon="@drawable/ic_search_black_24dp"
+        app:actionViewClass="android.widget.SearchView">
+
+    </item>
+
+    <item
+        android:id="@+id/Date_Filter_Item"
+        android:title="Select your date"
+        app:showAsAction="never">
+
+    </item>
+
+    <item
+        android:id="@+id/sortBy_Alpha_item"
+        android:title="Sort list alphabetically"
+        app:showAsAction="never">
+
+    </item>
+
+    <item
+        android:id="@+id/sortBy_Date_item"
+        android:title="Sort list by Dates"
+        app:showAsAction="never">
+
+    </item>
+</menu>

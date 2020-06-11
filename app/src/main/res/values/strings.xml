@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Mareu</string>
+    <string name="Delegate" />
+    <string name="add_a_new_meeting">Add a new meeting</string>
+    <string name="type_the_delegate">Type the delegate</string>
+    <string name="add_delegate">Add delegate</string>
+    <string name="type_the_location">Type the location</string>
+    <string name="time">Time</string>
+    <string name="type_to_select_the_date">Type to select the date</string>
+    <string name="type_the_subject">Type the subject</string>
+    <string name="back_button">Back button</string>
+    <string name="add">ADD</string>
+</resources>

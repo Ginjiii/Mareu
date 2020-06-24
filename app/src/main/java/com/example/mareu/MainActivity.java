@@ -43,8 +43,6 @@ public class MainActivity extends AppCompatActivity{
 
     private DatePickerDialog.OnDateSetListener mOnDateSetListener;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,9 +50,8 @@ public class MainActivity extends AppCompatActivity{
 
 
         mApiService = DI.getMeetingApiService();
-                myRecyclerView = findViewById(R.id.MeetingItemList);
+        myRecyclerView = findViewById(R.id.MeetingItemList);
         myRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        myRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         initList();
 
        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.add_meeting);

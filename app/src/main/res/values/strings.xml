@@ -10,4 +10,9 @@
     <string name="type_the_subject">Type the subject</string>
     <string name="back_button">Back button</string>
     <string name="add">ADD</string>
+    <string name="date">Date</string>
+    <string name="sujet">Sujet</string>
+    <string name="location">Location</string>
+    <string name="todo">TODO</string>
+    <string name="todo1">TODO</string>
 </resources>

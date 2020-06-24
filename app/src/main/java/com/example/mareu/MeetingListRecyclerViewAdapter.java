@@ -31,7 +31,6 @@ public class MeetingListRecyclerViewAdapter extends RecyclerView.Adapter<Meeting
     private MeetingApiService mApiService;
 
 
-
     public MeetingListRecyclerViewAdapter (ArrayList<Meeting> items) {
         mMeetingList = items;
     }
@@ -52,7 +51,6 @@ public class MeetingListRecyclerViewAdapter extends RecyclerView.Adapter<Meeting
         holder.Time.setText(meeting.getTime());
         holder.Location.setText(meeting.getLocation());
 
-
         String firstLetter = String.valueOf(meeting.getSubject().charAt(0));
         ColorGenerator generator = ColorGenerator.MATERIAL;
         int color = generator.getColor(meeting);
@@ -62,14 +60,10 @@ public class MeetingListRecyclerViewAdapter extends RecyclerView.Adapter<Meeting
 
         holder.picture.setImageDrawable(drawable);
 
-
         holder.Delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 EventBus.getDefault().post(new DeleteMeetingEvent(meeting));
-
-
-
 
             }
         });
@@ -94,8 +88,6 @@ public class MeetingListRecyclerViewAdapter extends RecyclerView.Adapter<Meeting
         RecyclerView Delegates;
         TextView Time;
 
-
-
         public MeetingListViewHolder(@NonNull View itemView) {
             super(itemView);
             picture= itemView.findViewById(R.id.ItemImageView);
@@ -105,8 +97,6 @@ public class MeetingListRecyclerViewAdapter extends RecyclerView.Adapter<Meeting
             Delete= itemView.findViewById(R.id.delete_button);
             Delegates= itemView.findViewById(R.id.emails_recyclerView);
             Time = itemView.findViewById(R.id.time_txt);
-
-
 
         }
     }
@@ -120,18 +110,16 @@ public class MeetingListRecyclerViewAdapter extends RecyclerView.Adapter<Meeting
         return myDateFilter;
     }
 
-
-
     private Filter myFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
             FilterResults results = new FilterResults();
             mApiService = DI.getNewInstanceApiService();
             myFullList = (ArrayList<Meeting>) mApiService.getMeetings();
-            ArrayList<Meeting> filtredList = new ArrayList<>();
+            ArrayList<Meeting> filteredList = new ArrayList<>();
 
             if (constraint ==  null && constraint.length()== 0) {
-                filtredList.addAll(myFullList);
+                filteredList.addAll(myFullList);
             }else {
 
 
@@ -140,19 +128,14 @@ public class MeetingListRecyclerViewAdapter extends RecyclerView.Adapter<Meeting
 
                 for (Meeting meeting : myFullList) {
                     if (meeting.getLocation().toString().toLowerCase().contains(constraint)) {
-                        filtredList.add(meeting);
+                        filteredList.add(meeting);
 
                     }
-
                 }
-
             }
-            results.values = filtredList;
+            results.values = filteredList;
             return results;
         }
-
-
-
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
@@ -162,7 +145,6 @@ public class MeetingListRecyclerViewAdapter extends RecyclerView.Adapter<Meeting
             notifyDataSetChanged();
         }
     };
-
 
     private Filter myDateFilter = new Filter() {
         @Override
@@ -170,31 +152,23 @@ public class MeetingListRecyclerViewAdapter extends RecyclerView.Adapter<Meeting
             FilterResults results = new FilterResults();
             mApiService = DI.getNewInstanceApiService();
             myFullList = (ArrayList<Meeting>) mApiService.getMeetings();
-            ArrayList<Meeting> filtredList = new ArrayList<>();
+            ArrayList<Meeting> filteredList = new ArrayList<>();
 
             if (constraint ==  null && constraint.length()== 0) {
-                filtredList.addAll(myFullList);
-            }else {
-
+                filteredList.addAll(myFullList);
+            } else {
 
                 constraint = constraint.toString().toLowerCase();
 
-
                 for (Meeting meeting : myFullList) {
                     if (meeting.getDate().toString().toLowerCase().contains(constraint)) {
-                        filtredList.add(meeting);
-
+                        filteredList.add(meeting);
                     }
-
                 }
-
             }
-            results.values = filtredList;
+            results.values = filteredList;
             return results;
         }
-
-
-
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
@@ -204,5 +178,4 @@ public class MeetingListRecyclerViewAdapter extends RecyclerView.Adapter<Meeting
             notifyDataSetChanged();
         }
     };
-
 }

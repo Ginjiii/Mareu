@@ -8,14 +8,12 @@
 
     <TextView
         android:id="@+id/delegate_txt"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/Delegate"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:text="@string/Delegate">
 
     </TextView>
-
-
 
 
 </LinearLayout>

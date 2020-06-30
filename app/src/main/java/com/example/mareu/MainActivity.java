@@ -1,5 +1,7 @@
 package com.example.mareu;
 import android.app.DatePickerDialog;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -11,7 +13,7 @@ import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,6 +34,7 @@ import java.util.List;
 import DI.DI;
 import Event.AddMeetingEvent;
 import Event.DeleteMeetingEvent;
+import Event.DetailMeetingEvent;
 import Model.Meeting;
 import Service.MeetingApiService;
 
@@ -108,7 +111,20 @@ public class MainActivity extends AppCompatActivity{
         mApiService.addMeeting(event.mMeeting);
         initList();
     }
-
+    //@Override
+    public void onItemClick(int position) {
+        //Context context = getActivity();
+     //   Bundle info = new Bundle();
+      //  info("Meeting",mMeetingList.get(Meeting));
+        Intent intent = new Intent(this, MeetingDetailActivity.class);
+       // intent(info);
+        startActivity(intent);
+    }
+    @Subscribe
+    public void onDetailMeeting(DetailMeetingEvent event) {
+        Intent intent = new Intent(this, MeetingDetailActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

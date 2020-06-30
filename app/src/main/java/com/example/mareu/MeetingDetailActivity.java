@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +13,11 @@ import Model.Meeting;
 import Service.MeetingApiService;
 
 public class MeetingDetailActivity extends AppCompatActivity {
+    TextView mTextViewSubject = findViewById(R.id.subject_txt);
+    TextView mTextViewDateText = findViewById(R.id.date_txt);
+    TextView mTextViewTime = findViewById(R.id.time_txt);
+    TextView mTextViewLocation = findViewById(R.id.location_txt);
+    TextView mTextViewEmail = findViewById(R.id.emails_recyclerView);
 
 
     private MeetingApiService mApiService;
@@ -33,6 +39,11 @@ public class MeetingDetailActivity extends AppCompatActivity {
     private void displayDetail() {
         if (getIntent().hasExtra("meeting")) {
             Bundle meeting = getIntent().getExtras();
+            mTextViewSubject.setText(meeting.getSubject());
+            mTextViewDateText.setText(meeting.getDate());
+            mTextViewTime.setText(meeting.getTime());
+            mTextViewLocation.setText(meeting.getLocation());
+            mTextViewEmail.setText(meeting.getEmail());
         }
     }
 

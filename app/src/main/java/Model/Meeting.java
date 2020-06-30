@@ -4,7 +4,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.Locale;
 
 public class Meeting {
@@ -51,7 +50,9 @@ public class Meeting {
         return date;
     }
 
-    public String getTime(){ return time; }
+    public String getTime() {
+        return time;
+    }
 
     public String getLocation() {
         return location;
@@ -69,7 +70,9 @@ public class Meeting {
         this.date = date;
     }
 
-    public void setTime(String time){this.time = time;}
+    public void setTime(String time) {
+        this.time = time;
+    }
 
     public void setLocation(String location) {
         this.location = location;

@@ -22,6 +22,7 @@ import java.util.ArrayList;
 
 import DI.DI;
 import Event.DeleteMeetingEvent;
+import Event.DetailMeetingEvent;
 import Model.Meeting;
 import Service.MeetingApiService;
 
@@ -59,6 +60,13 @@ public class MeetingListRecyclerViewAdapter extends RecyclerView.Adapter<Meeting
                 .buildRound(firstLetter, color); // radius in px
 
         holder.picture.setImageDrawable(drawable);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EventBus.getDefault().post(new DetailMeetingEvent(meeting));
+
+            }
+        });
 
         holder.Delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,10 +75,10 @@ public class MeetingListRecyclerViewAdapter extends RecyclerView.Adapter<Meeting
 
             }
         });
-        DelegateListRecyclerViewAdapter participantsAdapter = new DelegateListRecyclerViewAdapter(meeting.getDelegates());
-        holder.Delegates.setAdapter(participantsAdapter);
-        holder.Delegates.addItemDecoration(new DividerItemDecoration(holder.Delegates.getContext(), DividerItemDecoration.HORIZONTAL));
+        DelegateListRecyclerViewAdapter delegatesAdapter = new DelegateListRecyclerViewAdapter(meeting.getDelegates());
+        holder.Delegates.setAdapter(delegatesAdapter);
     }
+
 
     @Override
     public int getItemCount() {

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 
 public class DelegateListRecyclerViewAdapter extends RecyclerView.Adapter<DelegateListRecyclerViewAdapter.DelegateListViewHolder>{
     private ArrayList<String> myDelegate;
+    private RecyclerView myRecyclerView;
 
     public DelegateListRecyclerViewAdapter(ArrayList delegate) {
         myDelegate = delegate;
@@ -25,6 +27,8 @@ public class DelegateListRecyclerViewAdapter extends RecyclerView.Adapter<Delega
     public DelegateListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_delegate, parent, false);
         DelegateListViewHolder holder = new DelegateListViewHolder(view);
+      //  myRecyclerView.findViewById(R.id.MeetingItemList);
+      //  myRecyclerView.addItemDecoration(new DividerItemDecoration(parent.getContext(), 0));
         return holder;
 
     }

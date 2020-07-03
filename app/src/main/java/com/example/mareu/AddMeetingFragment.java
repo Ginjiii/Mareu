@@ -190,7 +190,17 @@ public class AddMeetingFragment extends DialogFragment {
 
         });
         return view;
+    }
 
+    public void confirm(View v){
+        if (!validateSubject() | !validateDate()|!validateTime() | !validateEmails() |!validateLocation()){
+            return;
+        }else {
+            Meeting meeting = new Meeting(mDateInput.getText().toString(), mTimeInput.getText().toString() ,mLocationInput.getEditText().getText().toString(), mSubjectInput.getEditText().getText().toString(), mDelegates);
+            EventBus.getDefault().post(new AddMeetingEvent(meeting));
+
+            dismiss();
+        }
     }
 
     @Override
@@ -279,17 +289,6 @@ public class AddMeetingFragment extends DialogFragment {
         }else {
             mTimeLayout.setErrorEnabled(false);
             return true;
-        }
-    }
-
-    public void confirm(View v){
-        if (!validateSubject() | !validateDate()|!validateTime() | !validateEmails() |!validateLocation()){
-            return;
-        }else {
-            Meeting newMeeting = new Meeting(mDateInput.getText().toString(), mTimeInput.getText().toString() ,mLocationInput.getEditText().getText().toString(), mSubjectInput.getEditText().getText().toString(), mDelegates);
-            EventBus.getDefault().post(new AddMeetingEvent(newMeeting));
-
-            dismiss();
         }
     }
 }

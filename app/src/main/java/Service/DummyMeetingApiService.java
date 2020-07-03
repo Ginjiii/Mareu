@@ -16,13 +16,10 @@ public class DummyMeetingApiService implements MeetingApiService {
     @Override
     public void addMeeting(Meeting meeting) {
         mMeetingList.add(meeting);
-
     }
 
     @Override
-    public void deleteMeeting(Meeting mMeeting) {
-        mMeetingList.remove(mMeeting);
+    public void deleteMeeting(Meeting meeting) {
+        mMeetingList.remove(meeting);
     }
-
-
 }

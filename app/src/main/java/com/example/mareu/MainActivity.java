@@ -1,6 +1,7 @@
 package com.example.mareu;
 import android.app.DatePickerDialog;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -111,18 +112,14 @@ public class MainActivity extends AppCompatActivity{
         mApiService.addMeeting(event.mMeeting);
         initList();
     }
-    //@Override
-    public void onItemClick(int position) {
-        //Context context = getActivity();
-     //   Bundle info = new Bundle();
-      //  info("Meeting",mMeetingList.get(Meeting));
-        Intent intent = new Intent(this, MeetingDetailActivity.class);
-       // intent(info);
-        startActivity(intent);
-    }
+
     @Subscribe
     public void onDetailMeeting(DetailMeetingEvent event) {
+        Context context = this;
+        Bundle info = new Bundle();
+        info.putParcelable("Meeting", event.mMeeting);
         Intent intent = new Intent(this, MeetingDetailActivity.class);
+        intent.putExtras(info);
         startActivity(intent);
     }
 
@@ -203,24 +200,16 @@ public class MainActivity extends AppCompatActivity{
                 return false;
             }
         });
-
-
         return true;
-
     }
-
 
     public void sortAlphabetically(){
         Collections.sort(mApiService.getMeetings(), Meeting.byAlpha);
         initList();
-
     }
 
     public void sortByDate(){
         Collections.sort(mApiService.getMeetings(), Meeting.byDate);
         initList();
-
     }
-
-
 }

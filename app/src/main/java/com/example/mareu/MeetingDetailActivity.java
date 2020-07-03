@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 import DI.DI;
 import Model.Meeting;
 import Service.MeetingApiService;
@@ -21,6 +23,7 @@ public class MeetingDetailActivity extends AppCompatActivity {
 
 
     private MeetingApiService mApiService;
+    private Meeting meeting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,15 +40,16 @@ public class MeetingDetailActivity extends AppCompatActivity {
      * get extra and show detail of meeting
      */
     private void displayDetail() {
-        if (getIntent().hasExtra("meeting")) {
-            Bundle meeting = getIntent().getExtras();
+            if (getIntent().hasExtra("Meeting")){
+                Bundle meeting = getIntent().getBundleExtra("Meeting");
+            }
             mTextViewSubject.setText(meeting.getSubject());
             mTextViewDateText.setText(meeting.getDate());
             mTextViewTime.setText(meeting.getTime());
             mTextViewLocation.setText(meeting.getLocation());
-            mTextViewEmail.setText(meeting.getEmail());
+            mTextViewEmail.setText((CharSequence) meeting.getDelegates());
         }
-    }
+
 
     /**
      * back to previously page

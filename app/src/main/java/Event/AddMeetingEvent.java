@@ -4,9 +4,9 @@ import Model.Meeting;
 
 public class AddMeetingEvent {
 
-    public Meeting mMeeting;
+    public Meeting meeting;
 
     public AddMeetingEvent(Meeting meeting) {
-        mMeeting = meeting;
+        this.meeting = meeting;
     }
 }

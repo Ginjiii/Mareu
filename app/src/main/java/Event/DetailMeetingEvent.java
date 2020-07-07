@@ -3,9 +3,9 @@ package Event;
 import Model.Meeting;
 
 public class DetailMeetingEvent {
-    public Meeting mMeeting;
+    public Meeting meeting;
 
     public DetailMeetingEvent(Meeting meeting) {
-        mMeeting = meeting;
+        this.meeting = meeting;
     }
 }

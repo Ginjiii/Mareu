@@ -1,4 +1,4 @@
-package com.example.mareu;
+package com.example.ui;
 
 
 import android.view.LayoutInflater;
@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -46,15 +45,9 @@ public class DelegateListRecyclerViewAdapter extends RecyclerView.Adapter<Delega
     public class DelegateListViewHolder extends RecyclerView.ViewHolder{
         TextView delegate;
 
-
-
         public DelegateListViewHolder(@NonNull View itemView) {
             super(itemView);
             delegate = itemView.findViewById(R.id.delegate_txt);
-
-
-
-
         }
     }
 }

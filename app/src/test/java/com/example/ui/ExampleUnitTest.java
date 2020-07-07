@@ -1,4 +1,4 @@
-package com.example.mareu;
+package com.example.ui;
 
 import org.junit.Test;
 

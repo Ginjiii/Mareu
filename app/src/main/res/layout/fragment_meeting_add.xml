@@ -1,198 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_new"
+    <ScrollView
+        android:id="@+id/add_meeting_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#3F51B5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/toolbar_txt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_toEndOf="@+id/back_button"
-                android:padding="20dp"
-                android:text="@string/add_a_new_meeting"
-                android:textColor="@color/cardview_light_background"
-                android:textSize="25sp"
-                android:layout_toRightOf="@+id/back_button"
-                tools:ignore="PrivateResource" />
-
-            <ImageButton
-                android:id="@+id/back_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="6dp"
-                android:background="#3F51B5"
-                android:padding="20dp"
-                android:src="@drawable/ic_arrow_back_black_24dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="0dp"
-                android:contentDescription="@string/back_button" />
-        </RelativeLayout>
-
-
-    </androidx.appcompat.widget.Toolbar>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_new">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
             android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/input_subject"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:counterEnabled="true"
-                app:counterMaxLength="15"
-                app:errorEnabled="true">
+                android:orientation="horizontal">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/type_the_subject"
-                    android:inputType="text" />
-
-
-            </com.google.android.material.textfield.TextInputLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/date_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    app:errorEnabled="true"
-                    >
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/input_date"
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/type_to_select_the_date"
-                        android:focusableInTouchMode="false"
-                        android:clickable="true"
-                        android:focusable="true" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/time_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/date_layout"
-                    app:errorEnabled="true"
-                    android:layout_toRightOf="@+id/date_layout">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/input_time"
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/time"
-                        android:focusableInTouchMode="false"
-                        android:clickable="true"
-                        android:focusable="true" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-
-
-            </RelativeLayout>
-
-
-
-
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/input_location"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:counterEnabled="true"
-                app:counterMaxLength="8"
-                app:errorEnabled="true">
-
-                <com.google.android.material.textfield.TextInputEditText
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/type_the_location"
-                    android:inputType="text" />
-
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/input_delegate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/type_the_delegate"
-                    android:inputType="textEmailAddress" />
-
-                <ImageButton
-                    android:id="@+id/add_delegate_btn"
-                    android:layout_width="37dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end|bottom"
-                    android:layout_marginTop="-55dp"
+                <ImageView
+                    android:id="@+id/add_avatar"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="10dp"
+                    android:contentDescription="@string/avatar"
+                    app:srcCompat="@drawable/ic_baseline_account_circle_24"
+                    android:layout_marginLeft="6dp"
                     android:layout_marginRight="10dp"
-                    android:contentDescription="@string/add_delegate"
-                    android:src="@drawable/ic_add_black_24dp" />
+                    tools:ignore="VectorDrawableCompat" />
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/Subject"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginEnd="20dp"
+                        android:ems="10"
+                        android:hint="Enter a subject"
+                        android:inputType="textPersonName"
+                        android:maxLength="15"
+                        android:textSize="24sp"
+                        android:textColor="#020000"
+                        android:layout_marginRight="20dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/add_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="50dp"
+                android:clickable="true"
+                android:drawableStart="@drawable/ic_baseline_calendar_today_24"
+                android:drawablePadding="10dp"
+                android:focusable="true"
+                android:hint="Enter a date"
+                android:textColor="#020000"
+                android:textSize="20sp"
+                android:layout_marginLeft="15dp"
+                android:drawableLeft="@drawable/ic_baseline_calendar_today_24" />
+
+            <TextView
+                android:id="@+id/add_room"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:clickable="true"
+                android:drawableStart="@drawable/ic_baseline_room_24"
+                android:drawablePadding="10dp"
+                android:focusable="true"
+                android:hint="Select a room"
+                android:textColor="#020000"
+                android:textSize="20sp"
+                android:layout_marginLeft="15dp"
+                android:drawableLeft="@drawable/ic_baseline_room_24" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:layout_marginLeft="15dp">
+
+                <TextView
+                    android:id="@+id/add_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/ic_baseline_access_time_24"
+                    android:drawablePadding="10dp"
+                    android:focusable="true"
+                    android:hint="Select an hour"
+                    android:textColor="#020000"
+                    android:textSize="20sp"
+                    android:drawableLeft="@drawable/ic_baseline_access_time_24" />
+
+                <TextView
+                    android:id="@+id/tiret"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="-"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/add_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.4"
+                    android:clickable="true"
+                    android:drawablePadding="10dp"
+                    android:enabled="false"
+                    android:focusable="true"
+                    android:hint="Enter a duration"
+                    android:textColor="#020000"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+
+            <MultiAutoCompleteTextView
+                android:id="@+id/add_delegates"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="10dp"
+                android:clickable="true"
+                android:drawableStart="@drawable/ic_baseline_person_add_24"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:focusable="true"
+                android:hint="@string/add_delegate"
+                android:textSize="18sp"
+                android:textColor="#020000"
+                android:drawableLeft="@drawable/ic_baseline_person_add_24" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/about_meeting"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/reunionSubject"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="about meeting"
+                    android:textSize="20dp"
+                    android:textColor="#020000"
+                    android:inputType="textMultiLine"
+                    android:lines="4"
+                    android:minLines="4" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
 
-
-
-
-
+            <Button
+                android:id="@+id/add_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/colorAccent"
+                android:enabled="false"
+                android:text="create meeting"
+                android:textColor="#FFFFFF" />
 
         </LinearLayout>
-
-
-    </androidx.cardview.widget.CardView>
-
-    <Button
-        android:id="@+id/add_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/add"
-        android:background="@color/colorAccent"
-        android:textColor="#FFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
-
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

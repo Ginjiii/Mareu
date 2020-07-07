@@ -10,88 +10,118 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
 public class Meeting implements Parcelable{
 
-    private String date;
-    private String time;
-    private String location;
-    private String subject;
-    private ArrayList<String> delegates;
+    private long id;
+    private String name;
+    private int avatarColor;
+    private Room location;
+    private Date beginTime;
+    private Date endTime;
+    private List<Delegate> delegates;
+    private String info;
 
     /**
      * Constructor
-     * @param date
-     * @param time
+     * @param id
+     * @param name
+     * @param avatarColor
      * @param location
-     * @param subject
      * @param delegates
+     * @param info
      */
 
-    public Meeting(String date, String time, String location, String subject, ArrayList<String> delegates) {
-        this.date = date;
-        this.time = time;
+    public Meeting(long id, String name, int avatarColor, Room location, Date beginTime, Date endTime, List<Delegate> delegates, String info) {
+        this.id = id;
+        this.name = name;
+        this.avatarColor = avatarColor;
         this.location = location;
-        this.subject = subject;
+        this.beginTime = beginTime;
+        this.endTime = endTime;
         this.delegates = delegates;
+        this.info = info;
     }
 
-    public Meeting(String s, String s1, String mario, String test, String s2, String s3) {
+    public long getId() {
+        return id;
     }
 
-    public String getDate() {
-        return date;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public String getName() {
+        return name;
     }
 
-    public String getTime() {
-        return time;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setTime() {
-        this.time = time;
+    public int getAvatarColor() {
+        return avatarColor;
     }
 
-    public String getLocation() {
+    public void setAvatarColor(int avatarColor) {
+        this.avatarColor = avatarColor;
+    }
+
+    public Room getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Room location) {
         this.location = location;
     }
 
-    public String getSubject() {
-        return subject;
+    public Date getBeginTime() {
+        return beginTime;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setBeginTime(Date beginTime) {
+        this.beginTime = beginTime;
     }
 
-    public ArrayList<String> getDelegates() {
-        return delegates;
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
+
+    public List<Delegate> getDelegates() {
+       return delegates;
+   }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(date);
-        dest.writeString(time);
-        dest.writeString(location);
-        dest.writeString(subject);
-        dest.writeStringList(delegates);
-    }
-
-    protected Meeting(Parcel in) {
-        date = in.readString();
-        time = in.readString();
-        location = in.readString();
-        subject = in.readString();
-        delegates = in.createStringArrayList();
+        dest.writeLong(id);
+        dest.writeString(name);
+        dest.writeInt(avatarColor);
+        dest.writeParcelable(location, flags);
+        dest.writeLong(beginTime.getTime());
+        dest.writeLong(endTime.getTime());
+        dest.writeList(delegates);
+        dest.writeString(info);
     }
 
     public static final Parcelable.Creator<Meeting> CREATOR = new Parcelable.Creator<Meeting>() {
@@ -102,49 +132,18 @@ public class Meeting implements Parcelable{
 
         @Override
         public Meeting[] newArray(int size) {
-            return new Meeting[0];
+            return new Meeting[size];
         }
     };
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Meeting meeting = (Meeting) o;
-        return date == meeting.date && time ==meeting.time && location == meeting.location && subject == meeting.subject && delegates == meeting.delegates;
+    protected Meeting(Parcel in) {
+        this.id = in.readLong();
+        this.name = in.readString();
+        this.avatarColor = in.readInt();
+        this.location = in.readParcelable(Room.class.getClassLoader());
+        this.beginTime = new Date (in.readLong());
+        this.endTime = new Date (in.readLong());
+        this.delegates = in.readParcelableList(new ArrayList<Delegate>(), Delegate.class.getClassLoader());
+        this.info = in.readString();
     }
-
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    @Override
-    public int hashCode() {
-        return Objects.hash(date);
-    }
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    public static final Comparator<Meeting> byAlpha = new Comparator<Meeting>() {
-        @Override
-        public int compare(Meeting r1, Meeting r2) {
-            return r1.subject.compareTo(r2.subject);
-        }
-    };
-
-    public static final Comparator<Meeting> byDate = new Comparator<Meeting>() {
-        @Override
-        public int compare(Meeting r1, Meeting r2) {
-            SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("dd/MM/yy hh:mm", Locale.FRANCE);
-            String dateStr1 = (r1.getDate().toString() + " " + r1.getTime().toString()).toString();
-            String dateStr2 = (r2.getDate().toString() + " " + r2.getTime().toString()).toString();
-
-
-            try {
-                return mSimpleDateFormat.parse(dateStr1).compareTo(mSimpleDateFormat.parse(dateStr2));
-            } catch (ParseException e) {
-                throw new IllegalArgumentException(e);
-            }
-
-        }
-    };
 }

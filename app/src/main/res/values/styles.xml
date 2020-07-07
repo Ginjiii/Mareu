@@ -12,4 +12,8 @@
 
     <style name="AppTheme_Full_screen_dialog"></style>
 
+    <style name="NumberPickerTheme"></style>
+
+    <style name="AppTheme.AppBarOverlay"></style>
+
 </resources>

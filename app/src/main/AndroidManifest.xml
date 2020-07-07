@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mareu">
+    package="com.example.ui">
 
     <application
         android:allowBackup="true"
@@ -9,14 +9,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MeetingDetailActivity">
-        </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.ui.AddMeetingFragment"
+            android:label="New meeting"/>
+        <activity android:name="com.example.ui.DialogNumberPicker"
+            android:label="Number Picker"/>
+        <activity android:name="com.example.ui.MeetingDetailActivity"
+            android:label="Detail View"/>
+        <activity android:name="com.example.ui.MainActivity"
+            android:label="Ma Reu">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
     </application>
 

@@ -6,4 +6,5 @@
     <color name="cardview_light_background" />
     <color name="design_default_color_on_secondary" />
     <color name="colorWithe" />
+    <color name="white">#FFFFFF</color>
 </resources>

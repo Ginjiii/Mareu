@@ -29,7 +29,7 @@ public class MeetingAPIServiceTest {
     }
 
     @Test
-    public void getReunionWithSuccess() {
+    public void getMeetingWithSuccess() {
         List<Meeting> meetings = service.getMeetings();
         List<Meeting> expectedMeetings = DummyMeetingGenerator.DUMMY_MEETINGS;
         assertThat(meetings, IsIterableContainingInAnyOrder.containsInAnyOrder(Objects.requireNonNull(expectedMeetings.toArray())));

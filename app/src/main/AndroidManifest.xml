@@ -9,14 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.ui.AddMeetingFragment"
+        <activity
+            android:name="com.example.ui.AddMeetingFragment"
             android:label="New meeting"/>
-        <activity android:name="com.example.ui.DialogNumberPicker"
+        <activity
+            android:name="com.example.ui.DialogNumberPicker"
             android:label="Number Picker"/>
-        <activity android:name="com.example.ui.MeetingDetailActivity"
+        <activity
+            android:name="com.example.ui.MeetingDetailActivity"
             android:label="Detail View"/>
-        <activity android:name="com.example.ui.MainActivity"
-            android:label="Ma Reu">
+        <activity
+            android:name="com.example.ui.MainActivity"
+            android:label="Ma Reu"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

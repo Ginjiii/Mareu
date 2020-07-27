@@ -66,6 +66,4 @@ public class Delegate implements Parcelable {
             this.id = in.readLong();
             this.email = in.readString();
         }
-
-
     }

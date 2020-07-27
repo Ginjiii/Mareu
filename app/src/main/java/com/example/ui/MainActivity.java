@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mToolbar = findViewById(R.id.toolbar);
         mAddMeetingButton = findViewById(R.id.add_meetings);
         mRecyclerView = findViewById(R.id.list_meetings);
         listOfMeetingRooms = listRoomsInStrings();
@@ -73,7 +72,7 @@ public class MainActivity extends AppCompatActivity{
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.filter_menu, menu);
+        menuInflater.inflate(R.menu.main, menu);
         return true;
     }
 
@@ -176,9 +175,12 @@ public class MainActivity extends AppCompatActivity{
     @Subscribe
     public void onClickMeeting(AddMeetingEvent event) {
         Intent detailActivityIntent = new Intent(MainActivity.this, MeetingDetailActivity.class);
-        detailActivityIntent.putExtra("MEETING", event.meeting);
+        Bundle info = new Bundle();
+        info.putParcelable("Meeting", event.meeting);
+        detailActivityIntent.putExtras(info);
         startActivity(detailActivityIntent);
     }
+
 
     // List the rooms in strings for the singleChoicePicker
     public String [] listRoomsInStrings() {

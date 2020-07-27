@@ -65,16 +65,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
                 android:layout_marginTop="50dp"
                 android:clickable="true"
                 android:drawableStart="@drawable/ic_baseline_calendar_today_24"
+                android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
                 android:drawablePadding="10dp"
                 android:focusable="true"
                 android:hint="Enter a date"
                 android:textColor="#020000"
-                android:textSize="20sp"
-                android:layout_marginLeft="15dp"
-                android:drawableLeft="@drawable/ic_baseline_calendar_today_24" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/add_room"
@@ -163,11 +163,11 @@
                 android:layout_marginEnd="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/reunionSubject"
+                    android:id="@+id/meetingSubject"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="about meeting"
+                    android:hint="About meeting"
                     android:textSize="20dp"
                     android:textColor="#020000"
                     android:inputType="textMultiLine"
@@ -183,7 +183,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:backgroundTint="@color/colorAccent"
+                android:backgroundTint="#3F51B5"
                 android:enabled="false"
                 android:text="create meeting"
                 android:textColor="#FFFFFF" />

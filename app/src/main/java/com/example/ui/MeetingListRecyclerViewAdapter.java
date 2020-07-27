@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Event.AddMeetingEvent;
@@ -40,7 +41,6 @@ public class MeetingListRecyclerViewAdapter extends RecyclerView.Adapter<Meeting
         return new ViewHolder(view);
     }
 
-
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         final Meeting meeting = mMeetings.get(position);
@@ -55,11 +55,16 @@ public class MeetingListRecyclerViewAdapter extends RecyclerView.Adapter<Meeting
         } else {
             holder.mMeetingAvatar.setColorFilter(meeting.getAvatarColor() , PorterDuff.Mode.SRC_IN);
         }
-        // Participant
-        holder.mDelegatesList.setText(appendDelegatesInString(meeting.getDelegates()));
-        // Date in the avatar
         holder.mMeetingDate.setText(DateFormat.format("dd/MM", meeting.getBeginTime().getTime()).toString());
 
+        // Delegate
+        String delegates = " , ";
+        for (Delegate delegate : meeting.getDelegates()){
+            delegates += delegate.getEmail();
+        }
+        holder.mDelegatesList.setText(delegates);
+        // Date in the avatar
+        holder.mMeetingDate.setText(DateFormat.format("dd/MM", meeting.getBeginTime().getTime()).toString());
 
         // Delete icon click listener
         holder.mDeleteButton.setOnClickListener(new View.OnClickListener() {
@@ -76,17 +81,6 @@ public class MeetingListRecyclerViewAdapter extends RecyclerView.Adapter<Meeting
                 EventBus.getDefault().post(new AddMeetingEvent(meeting));
             }
         });
-    }
-
-    // Make a string of all the meeting delegates to display
-    static String appendDelegatesInString (List<Delegate> meetingDelegates) {
-        StringBuilder meetingsDelegates = new StringBuilder();
-        for (int i = 0; i < meetingDelegates.size(); i++) {
-            meetingsDelegates.append(meetingDelegates.get(i).getEmail());
-            if (i < meetingDelegates.size()-1) meetingsDelegates.append(", ");
-        }
-        meetingsDelegates.append(".");
-        return meetingDelegates.toString();
     }
 
     // Function required for proper operation of the RecyclerView

@@ -212,26 +212,26 @@ public class AddMeetingFragment extends AppCompatActivity implements DialogNumbe
         });
 
 
-        // Setup participants ArrayList with only names
+        // Setup delegates ArrayList with only names
         for (int i = 0 ; i < mApiService.getDelegates().size(); i++){
             String email = mApiService.getDelegates().get(i).getEmail();
             listOfDelegatesNames.add(email.substring(0, email.indexOf("@")));
         }
-        final String[] arrayParticipantsNames = listOfDelegatesNames.toArray(new String[0]);
+        final String[] arrayDelegatesNames = listOfDelegatesNames.toArray(new String[0]);
 
-        // Participant multi autocomplete field init
+        // Delegate multi autocomplete field init
         ArrayAdapter<String> adapter =
-                new ArrayAdapter<> (this, android.R.layout.select_dialog_item, arrayParticipantsNames);
+                new ArrayAdapter<> (this, android.R.layout.select_dialog_item, arrayDelegatesNames);
         delegatesInput.setThreshold(1); //will start working from first character
         delegatesInput.setAdapter(adapter);
-        delegatesInput.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+        //delegatesInput.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
 
-        // Participant select input
+        // Delegate select input
         delegatesInput.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String itemNameDisplayed = delegatesInput.getAdapter().getItem(position).toString();
-                for (int i = 0; i < arrayParticipantsNames.length ; i++){
+                for (int i = 0; i < arrayDelegatesNames.length ; i++){
                     if (listOfDelegatesNames.get(i).equals(itemNameDisplayed)){
                         meetingDelegates.add(mApiService.getDelegates().get(i));
                         break;
@@ -247,7 +247,7 @@ public class AddMeetingFragment extends AppCompatActivity implements DialogNumbe
             @Override
             public void onClick(View v) {
                 updateTimes();
-                Meeting reunion = new Meeting(
+                Meeting meeting = new Meeting(
                         System.currentTimeMillis(),
                         nameInput.getEditText().getText().toString(),
                         meetingColor,
@@ -259,7 +259,7 @@ public class AddMeetingFragment extends AppCompatActivity implements DialogNumbe
 
                 // Create if no other meeting overlap the new one
                 if (checkMeetingAvailability()) {
-                    mApiService.createMeeting(reunion);
+                    mApiService.createMeeting(meeting);
                     finish();
 
                     // Else return dialog with the info of the overlap meeting

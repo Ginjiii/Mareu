@@ -8,12 +8,17 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="AppTheme_Full_screen_dialogue"></style>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 
-    <style name="AppTheme_Full_screen_dialog"></style>
+    <style name="AppTheme_Full_screen_dialogue" />
 
-    <style name="NumberPickerTheme"></style>
+    <style name="AppTheme_Full_screen_dialog" />
 
-    <style name="AppTheme.AppBarOverlay"></style>
+    <style name="NumberPickerTheme" />
+
+    <style name="AppTheme.AppBarOverlay" />
 
 </resources>

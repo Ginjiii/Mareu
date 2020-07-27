@@ -205,7 +205,7 @@ public class MainListTest {
      * On button create click, should check if other meeting overlap the one we create
      */
     @Test
-    public void MeetingList_onClickCreate_shouldNotOverlapOtherReunion() {
+    public void MeetingList_onClickCreate_shouldNotOverlapOtherMeeting() {
         onView(withId(R.id.add_meetings)).perform(click());
         onView(withId(R.id.name)).perform(clearText(), typeText("Meeting Name"));
         onView(withId(R.id.add_date)).perform(click());

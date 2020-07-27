@@ -38,4 +38,7 @@
     <string name="no_more_info" />
     <string name="unavailable_message" />
     <string name="until" />
+    <string name="filter_by_location" />
+    <string name="filter_by_date" />
+    <string name="clear_filter" />
 </resources>

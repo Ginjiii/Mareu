@@ -27,15 +27,8 @@ public class Meeting implements Parcelable{
     private String info;
 
     /**
-     * Constructor
-     * @param id
-     * @param name
-     * @param avatarColor
-     * @param location
-     * @param delegates
-     * @param info
+     * constructor
      */
-
     public Meeting(long id, String name, int avatarColor, Room location, Date beginTime, Date endTime, List<Delegate> delegates, String info) {
         this.id = id;
         this.name = name;
@@ -99,6 +92,10 @@ public class Meeting implements Parcelable{
        return delegates;
    }
 
+    public void setDelegates(List<Delegate> delegates) {
+        this.delegates = delegates;
+    }
+
     public String getInfo() {
         return info;
     }
@@ -114,14 +111,14 @@ public class Meeting implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeLong(id);
-        dest.writeString(name);
-        dest.writeInt(avatarColor);
-        dest.writeParcelable(location, flags);
-        dest.writeLong(beginTime.getTime());
-        dest.writeLong(endTime.getTime());
-        dest.writeList(delegates);
-        dest.writeString(info);
+       dest.writeLong(id);
+       dest.writeString(name);
+       dest.writeInt(avatarColor);
+       dest.writeParcelable(location, flags);
+       dest.writeLong(beginTime.getTime());
+       dest.writeLong(endTime.getTime());
+       dest.writeParcelableList (delegates, flags);
+       dest.writeString(info);
     }
 
     public static final Parcelable.Creator<Meeting> CREATOR = new Parcelable.Creator<Meeting>() {
@@ -136,14 +133,15 @@ public class Meeting implements Parcelable{
         }
     };
 
-    protected Meeting(Parcel in) {
-        this.id = in.readLong();
-        this.name = in.readString();
-        this.avatarColor = in.readInt();
-        this.location = in.readParcelable(Room.class.getClassLoader());
-        this.beginTime = new Date (in.readLong());
-        this.endTime = new Date (in.readLong());
-        this.delegates = in.readParcelableList(new ArrayList<Delegate>(), Delegate.class.getClassLoader());
-        this.info = in.readString();
+    private Meeting(Parcel in) {
+     this. id = in.readLong();
+     this. name = in.readString();
+     this. avatarColor = in.readInt();
+     this. location = in.readParcelable(Room.class.getClassLoader());
+     this. beginTime = new Date (in.readLong());
+     this. endTime = new Date (in.readLong());
+     this. delegates = in.readParcelableList(new ArrayList<Delegate>(), Delegate.class.getClassLoader());
+     this. info = in.readString();
     }
+
 }

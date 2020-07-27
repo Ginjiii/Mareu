@@ -49,11 +49,11 @@ public class DummyMeetingApiService implements MeetingApiService {
             if (isDateFiltered || isLocationFiltered){
                 for (int i = 0; i < getMeetings().size(); i++) {
 
-                    // Comparison of rooms
+                    // Difference of rooms
                     String sMeetingLocation = getMeetings().get(i).getLocation().getRoom();
                     boolean boolLocation = sMeetingLocation.equals(roomFilterSelected);
 
-                    // Comparison of dates (with calendars)
+                    // difference of dates (with calendars)
                     Calendar cal1 = Calendar.getInstance();
                     Calendar cal2 = Calendar.getInstance();
                     cal1.setTime(getMeetings().get(i).getBeginTime());

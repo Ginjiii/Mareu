@@ -7,7 +7,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -24,7 +23,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 import DI.DI;
 import Event.AddMeetingEvent;
@@ -58,6 +56,8 @@ public class MainActivity extends AppCompatActivity{
         listOfMeetingRooms = listRoomsInStrings();
 
         setSupportActionBar(mToolbar);
+        mToolbar = findViewById(R.id.toolbar);
+
 
         mRecyclerViewAdapter = new MeetingListRecyclerViewAdapter(mApiService.getMeetings());
         mRecyclerView.setAdapter(mRecyclerViewAdapter);
@@ -71,8 +71,8 @@ public class MainActivity extends AppCompatActivity{
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.main, menu);
+        MenuInflater Inflater = getMenuInflater();
+        Inflater.inflate(R.menu.menu_filter, menu);
         return true;
     }
 
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity{
      * Menu Filter selection
      */
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
 
             // Room filter
@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity{
                             initList();
 
                         }, year, month, day);
-                Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawableResource(android.R.color.transparent);
+                dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
                 dialog.show();
                 isDateFiltered = true;
                 return true;

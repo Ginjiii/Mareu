@@ -32,21 +32,21 @@ public class MeetingAPIServiceTest {
     public void getMeetingWithSuccess() {
         List<Meeting> meetings = service.getMeetings();
         List<Meeting> expectedMeetings = DummyMeetingGenerator.DUMMY_MEETINGS;
-        assertThat(meetings, IsIterableContainingInAnyOrder.containsInAnyOrder(Objects.requireNonNull(expectedMeetings.toArray())));
+        assertThat(meetings, IsIterableContainingInAnyOrder.containsInAnyOrder(expectedMeetings.toArray()));
     }
 
     @Test
     public void getDelegateWithSuccess() {
         List<Delegate> delegates = service.getDelegates();
         List<Delegate> expectedDelegates = DummyMeetingGenerator.DUMMY_DELEGATES;
-        assertThat(delegates, IsIterableContainingInAnyOrder.containsInAnyOrder(Objects.requireNonNull(expectedDelegates.toArray())));
+        assertThat(delegates, IsIterableContainingInAnyOrder.containsInAnyOrder(expectedDelegates.toArray()));
     }
 
     @Test
     public void getRoomWithSuccess() {
         List<Room> rooms = service.getRooms();
         List<Room> expectedRooms = DummyMeetingGenerator.DUMMY_ROOMS;
-        assertThat(rooms, IsIterableContainingInAnyOrder.containsInAnyOrder(Objects.requireNonNull(expectedRooms.toArray())));
+        assertThat(rooms, IsIterableContainingInAnyOrder.containsInAnyOrder(expectedRooms.toArray()));
     }
 
 

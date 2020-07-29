@@ -79,7 +79,7 @@ public class AddMeetingFragment extends AppCompatActivity implements DialogNumbe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_meeting_add);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         avatarImage = findViewById(R.id.add_avatar);
         nameInput = findViewById(R.id.Subject);
@@ -126,7 +126,7 @@ public class AddMeetingFragment extends AppCompatActivity implements DialogNumbe
                                 enableCreateButtonIfReady();
                             }
                         }, year, month, day);
-                Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawableResource(android.R.color.transparent);
+                dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
                 dialog.show();
 
             }
@@ -188,7 +188,7 @@ public class AddMeetingFragment extends AppCompatActivity implements DialogNumbe
                                 }
                             }
                         }, hour, minutes, true);
-                Objects.requireNonNull(mTimePicker.getWindow()).setBackgroundDrawableResource(android.R.color.transparent);
+                mTimePicker.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
                 mTimePicker.show();
             }
         });
@@ -202,7 +202,7 @@ public class AddMeetingFragment extends AppCompatActivity implements DialogNumbe
             }
         });
 
-        Objects.requireNonNull(nameInput.getEditText()).addTextChangedListener(new TextWatcher() {
+        nameInput.getEditText().addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             @Override
@@ -322,12 +322,12 @@ public class AddMeetingFragment extends AppCompatActivity implements DialogNumbe
 
     // Enable the Create button if all the fields are fill (info is optional)
     public void enableCreateButtonIfReady() {
-        boolean isReady = (Objects.requireNonNull(nameInput.getEditText()).getText().length() > 0
+        boolean isReady = nameInput.getEditText().getText().length() > 0
                 && timeInput.getText().length() > 0
                 && dateInput.getText().length() > 0
                 && roomInput.getText().length() > 0
                 && delegatesInput.getText().length() > 0
-                && durationInput.getText().length() > 0);
+                && durationInput.getText().length() > 0;
 
         if (isReady){
             addButton.setEnabled(true);

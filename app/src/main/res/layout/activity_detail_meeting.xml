@@ -52,7 +52,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/detail_info_cardView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="10dp"
@@ -62,6 +62,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="#324191"
                     android:orientation="vertical">
 
                     <TextView
@@ -73,7 +74,7 @@
                         android:layout_marginTop="20dp"
                         android:drawableStart="@drawable/ic_baseline_room_24"
                         android:drawableLeft="@drawable/ic_baseline_room_24"
-                        android:drawablePadding="10dp"
+                        android:drawablePadding="4dp"
                         android:gravity="center"
                         android:textColor="#020000"
                         android:textSize="20sp"
@@ -88,7 +89,7 @@
                         android:layout_marginTop="20dp"
                         android:drawableStart="@drawable/ic_baseline_access_time_24"
                         android:drawableLeft="@drawable/ic_baseline_access_time_24"
-                        android:drawablePadding="10dp"
+                        android:drawablePadding="4dp"
                         android:gravity="center"
                         android:textColor="#020000"
                         android:textSize="20sp"
@@ -96,7 +97,7 @@
 
                     <TextView
                         android:id="@+id/detail_info_delegate"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:layout_marginLeft="20dp"
@@ -104,8 +105,9 @@
                         android:layout_marginBottom="20dp"
                         android:drawableStart="@drawable/ic_baseline_person_add_24"
                         android:drawableLeft="@drawable/ic_baseline_person_add_24"
-                        android:drawablePadding="10dp"
+                        android:drawablePadding="4dp"
                         android:gravity="start"
+                        android:singleLine="false"
                         android:textColor="#020000"
                         android:textSize="20sp"
                         tools:text="Delegate" />
@@ -120,6 +122,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="10dp"
+                android:background="#324191"
+                app:cardBackgroundColor="#324191"
                 app:contentPaddingRight="30sp">
 
                 <TextView

@@ -41,4 +41,5 @@
     <string name="filter_by_location" />
     <string name="filter_by_date" />
     <string name="clear_filter" />
+    <string name="filter_meetings" />
 </resources>

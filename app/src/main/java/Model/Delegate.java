@@ -5,26 +5,14 @@ import android.os.Parcelable;
 
 public class Delegate implements Parcelable {
 
-        /** Id */
-        private long id;
-
         /** Email */
         private String email;
 
         /**
          * Constructor
          */
-        public Delegate(long id, String email) {
-            this.id = id;
+        public Delegate(String email) {
             this.email = email;
-        }
-
-        public long getId() {
-            return id;
-        }
-
-        public void setId(long id) {
-            this.id = id;
         }
 
         public String getEmail() {
@@ -46,7 +34,6 @@ public class Delegate implements Parcelable {
 
         @Override
         public void writeToParcel(Parcel dest, int flags) {
-            dest.writeLong(id);
             dest.writeString(email);
         }
 
@@ -63,7 +50,6 @@ public class Delegate implements Parcelable {
         };
 
         private Delegate(Parcel in) {
-            this.id = in.readLong();
             this.email = in.readString();
         }
     }

@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 import Model.Delegate;
 import Model.Meeting;
@@ -57,11 +56,11 @@ public class MeetingDetailActivity extends AppCompatActivity {
             mAvatarImageView.setBackgroundColor(meeting.getAvatarColor());
             mSubjectTextView.setText(meeting.getName());
             mDateTextView.setText(DateFormat.format("dd/MM/yyyy", meeting.getBeginTime()));
-            mLocationTextView.setText(meeting.getInfo());
+            mLocationTextView.setText(meeting.getLocation().getRoom());
             mTimeTextView.setText(DateFormat.format("HH:mm", meeting.getBeginTime()).toString() +"," + DateFormat.format("HH:mm", meeting.getEndTime()).toString());
             String delegates = "";
             for (Delegate delegate : meeting.getDelegates()){
-                delegates += delegate.getEmail();
+                delegates += delegate.getEmail() + System.getProperty("line.separator") ;
             }
             mDelegatesTextView.setText(delegates);
             mAboutTitleTextView.setText(R.string.about_the_meeting);

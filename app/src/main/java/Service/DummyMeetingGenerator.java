@@ -22,16 +22,16 @@ public abstract class DummyMeetingGenerator {
     );
 
     public static List<Delegate> DUMMY_DELEGATES = Arrays.asList(
-            new Delegate(1, "Caroline@lamzone.com"),
-            new Delegate(2, "Jack@lamzone.com"),
-            new Delegate(3, "Chloé@lamzone.com"),
-            new Delegate(4, "Vincent@lamzone.com"),
-            new Delegate(5, "Elodie@lamzone.com"),
-            new Delegate(6, "Sylvain@lamzone.com"),
-            new Delegate(7, "Laetitia@lamzone.com"),
-            new Delegate(8, "Dan@lamzone.com"),
-            new Delegate(9, "Joseph@lamzone.com"),
-            new Delegate(10, "Emma@lamzone.com")
+            new Delegate("Caroline@lamzone.com"),
+            new Delegate("Jack@lamzone.com"),
+            new Delegate("Chloé@lamzone.com"),
+            new Delegate( "Vincent@lamzone.com"),
+            new Delegate("Elodie@lamzone.com"),
+            new Delegate("Sylvain@lamzone.com"),
+            new Delegate("Laetitia@lamzone.com"),
+            new Delegate("Dan@lamzone.com"),
+            new Delegate("Joseph@lamzone.com"),
+            new Delegate("Emma@lamzone.com")
     );
 
 

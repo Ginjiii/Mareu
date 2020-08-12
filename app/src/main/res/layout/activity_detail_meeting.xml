@@ -34,9 +34,10 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="#020000"
+                android:textColor="#FFFF"
                 android:textSize="50sp"
                 tools:text="Subject" />
+
 
             <TextView
                 android:id="@+id/detail_date"
@@ -44,10 +45,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="#020000"
+                android:textColor="#FFFF"
                 android:textSize="30sp"
                 tools:text="00/00/0000" />
-
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/detail_info_cardView"
@@ -62,7 +62,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#324191"
+                    android:addStatesFromChildren="false"
+                    android:background="#FFFF"
                     android:orientation="vertical">
 
                     <TextView
@@ -122,8 +123,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="10dp"
-                android:background="#324191"
-                app:cardBackgroundColor="#324191"
+                android:background="#FFFF"
+                app:cardBackgroundColor="#FFFF"
                 app:contentPaddingRight="30sp">
 
                 <TextView

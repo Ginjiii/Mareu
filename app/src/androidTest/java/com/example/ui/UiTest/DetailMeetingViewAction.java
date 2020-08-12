@@ -7,7 +7,7 @@ import androidx.test.espresso.ViewAction;
 
 import org.hamcrest.Matcher;
 
-public class MeetingViewAction implements ViewAction {
+public class DetailMeetingViewAction implements ViewAction {
 
     @Override
     public Matcher<View> getConstraints() {

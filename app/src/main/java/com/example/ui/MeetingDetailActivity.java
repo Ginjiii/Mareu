@@ -60,7 +60,7 @@ public class MeetingDetailActivity extends AppCompatActivity {
             mTimeTextView.setText(DateFormat.format("HH:mm", meeting.getBeginTime()).toString() +"," + DateFormat.format("HH:mm", meeting.getEndTime()).toString());
             String delegates = "";
             for (Delegate delegate : meeting.getDelegates()){
-                delegates += delegate.getEmail() + System.getProperty("line.separator") ;
+                delegates += delegate.getEmail() + System.getProperty("line.separator");
             }
             mDelegatesTextView.setText(delegates);
             mAboutTitleTextView.setText(R.string.about_the_meeting);

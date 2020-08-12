@@ -14,11 +14,11 @@ import Model.Room;
 public abstract class DummyMeetingGenerator {
 
     public static List<Room> DUMMY_ROOMS = Arrays.asList(
-            new Room(1, "Mario"),
-            new Room(2, "Luigi"),
-            new Room(3, "Peach"),
-            new Room(4, "Toad"),
-            new Room(5, "Bowser")
+            new Room(0, "Mario"),
+            new Room(1, "Luigi"),
+            new Room(2, "Peach"),
+            new Room(3, "Toad"),
+            new Room(4, "Bowser")
     );
 
     public static List<Delegate> DUMMY_DELEGATES = Arrays.asList(
@@ -37,10 +37,10 @@ public abstract class DummyMeetingGenerator {
 
     public static List<Meeting> DUMMY_MEETINGS = Arrays.asList(
             new Meeting(1, "Test", 0xFF4c4f6a, DUMMY_ROOMS.get(1), initBeginTime("10:00", "26/04/2020"), initEndTime("11:00", "26/04/2020"), getDelegatesEmail(1, 4, 6, 9),""),
-            new Meeting(2, "Mareu",0xFFd63535,DUMMY_ROOMS.get(0), initBeginTime("11:00", "26/04/2020"), initEndTime("11:30", "26/04/2020"), getDelegatesEmail(1, 2, 5, 8, 9),""),
+            new Meeting(2, "Gestion",0xFFd63535,DUMMY_ROOMS.get(0), initBeginTime("11:00", "26/04/2020"), initEndTime("11:30", "26/04/2020"), getDelegatesEmail(1, 2, 5, 8, 9),""),
             new Meeting(3, "Cafe",0xFFffee86,DUMMY_ROOMS.get(2), initBeginTime("14:30", "26/04/2020"), initEndTime("15:30", "26/04/2020"), getDelegatesEmail(3, 7, 9),""),
-            new Meeting(4, "PointHebdo",0xFF6fd446, DUMMY_ROOMS.get(4), initBeginTime("12:30", "27/04/2020"), initEndTime("14:00", "27/04/2020"), getDelegatesEmail( 1, 4, 5, 7, 9),""),
-            new Meeting(5, "blabla",0xFF4690d4, DUMMY_ROOMS.get(3), initBeginTime("15:00", "27/04/2020"), initEndTime("16:30", "27/04/2020"), getDelegatesEmail(3, 5),"")
+            new Meeting(4, "Point",0xFF6fd446, DUMMY_ROOMS.get(4), initBeginTime("12:30", "27/04/2020"), initEndTime("14:00", "27/04/2020"), getDelegatesEmail( 1, 4, 5, 7, 9),""),
+            new Meeting(5, "Dispenser",0xFF4690d4, DUMMY_ROOMS.get(3), initBeginTime("15:00", "27/04/2020"), initEndTime("16:30", "27/04/2020"), getDelegatesEmail(3, 5),"")
     );
 
   // // Pick up Delegates with their place n° from the list

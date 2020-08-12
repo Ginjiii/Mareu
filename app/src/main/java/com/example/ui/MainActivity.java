@@ -55,8 +55,8 @@ public class MainActivity extends AppCompatActivity{
         mRecyclerView = findViewById(R.id.list_meetings);
         listOfMeetingRooms = listRoomsInStrings();
 
-        setSupportActionBar(mToolbar);
         mToolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
 
 
         mRecyclerViewAdapter = new MeetingListRecyclerViewAdapter(mApiService.getMeetings());
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity{
                     roomFilterSelected = listOfMeetingRooms[which];
                     initList();
                 });
-                mBuilder.setPositiveButton(R.string.ok, null);
+                mBuilder.setPositiveButton(R.string.Ok, null);
                 mBuilder.setNeutralButton(R.string.cancel, (dialog, which) -> {
                     isLocationFiltered = false;
                     initList();

@@ -32,7 +32,7 @@ public class DialogNumberPicker extends AppCompatDialogFragment {
                     public void onClick(DialogInterface dialog, int which) {
                     }
                 })
-                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.Ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         mListener.durationListener(hour, minute);

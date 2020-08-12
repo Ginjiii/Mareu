@@ -115,16 +115,13 @@ public class AddMeetingFragment extends AppCompatActivity implements DialogNumbe
 
                 DatePickerDialog dialog = new DatePickerDialog(AddMeetingFragment.this,
                         android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                        new DatePickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                                beginCalendar.set(Calendar.YEAR, year);
-                                beginCalendar.set(Calendar.MONTH, month);
-                                beginCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                                String dateSet = DateFormat.format("dd/MM/yyyy", beginCalendar.getTime()).toString();
-                                dateInput.setText(dateSet);
-                                enableCreateButtonIfReady();
-                            }
+                        (view, year1, month1, dayOfMonth) -> {
+                            beginCalendar.set(Calendar.YEAR, year1);
+                            beginCalendar.set(Calendar.MONTH, month1);
+                            beginCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                            String dateSet = DateFormat.format("dd/MM/yyyy", beginCalendar.getTime()).toString();
+                            dateInput.setText(dateSet);
+                            enableCreateButtonIfReady();
                         }, year, month, day);
                 dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
                 dialog.show();
@@ -144,10 +141,9 @@ public class AddMeetingFragment extends AppCompatActivity implements DialogNumbe
                     public void onClick(DialogInterface dialog, int which) {
                         meetingRoom = mApiService.getRooms().get(which);
                         roomInput.setText(getString(R.string.meeting_in_the_x_room, listMeetingRooms[which]));
-
                     }
                 });
-                mBuilder.setPositiveButton(R.string.ok, null);
+                mBuilder.setPositiveButton(R.string.Ok, null);
                 mBuilder.setNeutralButton(R.string.cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -159,7 +155,6 @@ public class AddMeetingFragment extends AppCompatActivity implements DialogNumbe
                 enableCreateButtonIfReady();
             }
         });
-
 
         // Time select input
         timeInput.setOnClickListener(new View.OnClickListener() {
@@ -224,7 +219,7 @@ public class AddMeetingFragment extends AppCompatActivity implements DialogNumbe
                 new ArrayAdapter<> (this, android.R.layout.select_dialog_item, arrayDelegatesNames);
         delegatesInput.setThreshold(1); //will start working from first character
         delegatesInput.setAdapter(adapter);
-        //delegatesInput.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+        delegatesInput.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
 
         // Delegate select input
         delegatesInput.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -268,7 +263,7 @@ public class AddMeetingFragment extends AppCompatActivity implements DialogNumbe
                     mBuilder.setCancelable(true);
                     mBuilder.setTitle(R.string.meeting_room_unavailable);
                     mBuilder.setMessage(unavailableMessage);
-                    mBuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    mBuilder.setPositiveButton(R.string.Ok, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) { }
                     });

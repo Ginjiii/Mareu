@@ -69,14 +69,14 @@ public class MeetingAPIServiceTest {
         int testIndex = 1;
         Meeting expectedMeeting = service.getMeetings().get(testIndex);
         List<Meeting> filteredMeetings = service.meetingListFilter(true, true, expectedMeeting.getLocation().getRoom(), expectedMeeting.getBeginTime());
-        int nReuTheSameDayInTheSameRoom = 0;
+        int nMeetingTheSameDayInTheSameRoom = 0;
         for (int i=0; i < service.getMeetings().size(); i++) {
             if (service.getMeetings().get(i).getLocation() != expectedMeeting.getLocation())
                 continue;
-            nReuTheSameDayInTheSameRoom++;
+            nMeetingTheSameDayInTheSameRoom++;
         }
         assertTrue(filteredMeetings.contains(expectedMeeting));
-        assertFalse(filteredMeetings.size() > nReuTheSameDayInTheSameRoom);
+        assertFalse(filteredMeetings.size() > nMeetingTheSameDayInTheSameRoom);
     }
 
 }

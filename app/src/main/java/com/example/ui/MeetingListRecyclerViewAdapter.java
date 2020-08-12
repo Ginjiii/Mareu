@@ -12,12 +12,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.greenrobot.eventbus.EventBus;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import Event.AddMeetingEvent;
@@ -32,8 +30,6 @@ public class MeetingListRecyclerViewAdapter extends RecyclerView.Adapter<Meeting
         mMeetings = items;
     }
 
-
-    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -58,9 +54,9 @@ public class MeetingListRecyclerViewAdapter extends RecyclerView.Adapter<Meeting
         holder.mMeetingDate.setText(DateFormat.format("dd/MM", meeting.getBeginTime().getTime()).toString());
 
         // Delegate
-        String delegates = " , ";
+        String delegates = "";
         for (Delegate delegate : meeting.getDelegates()){
-            delegates += delegate.getEmail();
+            delegates += delegate.getEmail() + " ";
         }
         holder.mDelegatesList.setText(delegates);
         // Date in the avatar

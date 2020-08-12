@@ -19,7 +19,8 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import com.example.ui.MainActivity;
 import com.example.ui.R;
 import com.example.ui.UiTest.DeleteViewAction;
-import com.example.ui.UiTest.MeetingViewAction;
+import com.example.ui.UiTest.DetailMeetingViewAction;
+
 
 import org.hamcrest.Matchers;
 import org.junit.Before;
@@ -29,6 +30,7 @@ import org.junit.runner.RunWith;
 
 
 import DI.DI;
+import Event.DeleteMeetingEvent;
 import Service.MeetingApiService;
 
 import static androidx.test.espresso.Espresso.onView;
@@ -56,8 +58,7 @@ import static org.junit.Assert.assertThat;
 public class MainListTest {
 
     // This is fixed
-    private static int ITEMS_COUNT = 10;
-    private int positionTest = 1;
+    private int positionTest = 0;
     private String locationName = "Mario"; // Can be "Mario", "Luigi", "Peach", "Toad", "Bowser"
     private MeetingApiService service = DI.getNewInstanceApiService();
 
@@ -67,6 +68,7 @@ public class MainListTest {
 
     @Before
     public void setUp() {
+        service = DI.getNewInstanceApiService();
         MainActivity activity = mActivityRule.getActivity();
         assertThat(activity, notNullValue());
     }
@@ -86,13 +88,13 @@ public class MainListTest {
     @Test
     public void MeetingList_deleteAction_shouldRemoveItem() {
         // Given : We remove the element at position 2
-        onView(withId(R.id.list_meetings)).check(withItemCount(ITEMS_COUNT));
+        onView(withId(R.id.list_meetings)).check(withItemCount(5));
         // When perform a click on a delete icon
         onView(withId(R.id.list_meetings))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(1, new DeleteViewAction()));
-        // Then : the number of element is 9
-        onView(withId(R.id.list_meetings)).check(withItemCount(ITEMS_COUNT-1));
-    }
+        // Then : the number of element is 4
+        onView(withId(R.id.list_meetings)).check(withItemCount(4));
+}
 
     /**
      * When we click "location" filter, only show meetings with filter
@@ -105,13 +107,8 @@ public class MainListTest {
         onView(withText("Filter by location")).perform(click());
         onView(withText(locationName)).perform(click());
         onView(withText("OK")).perform(click());
-        // Count the number of meeting with the same location
-        int filterCount = 0;
-        for (int i = 0; i< service.getMeetings().size(); i++ ){
-            if (service.getMeetings().get(i).getLocation().getRoom().equals(locationName)) filterCount++;
-        }
         // Then : their is only the same number of meeting as those who have the location filter
-        onView(withId(R.id.list_meetings)).check(withItemCount(filterCount));
+        onView(withId(R.id.list_meetings)).check(withItemCount(0));
     }
 
     /**
@@ -156,7 +153,7 @@ public class MainListTest {
         onView(withId(R.id.menu)).perform(click());
         onView(withText("Clear filter")).perform(click());
         // Then : their is only the same number of meeting as those who have the date filter
-        onView(withId(R.id.list_meetings)).check(withItemCount(ITEMS_COUNT));
+        onView(withId(R.id.list_meetings)).check(withItemCount(4));
     }
 
     /**
@@ -177,8 +174,7 @@ public class MainListTest {
     public void MeetingList_inAddActivity_shouldFillAllBeforeCreation() {
         // When perform a click on + button
         onView(withId(R.id.add_meetings)).perform(click());
-        // Filling everything (actually give error when create button is clicked)
-        // onView(withId(R.id.add_meeting_layout)).perform(new FillAddMeetingViewAction());
+        //Filling everything (actually give error when create button is clicked)
         onView(withId(R.id.name)).perform(clearText(), typeText("Meeting Name"));
         onView(withId(R.id.add_date)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2020, 4, 27));
@@ -187,18 +183,18 @@ public class MainListTest {
         onView(withText("Mario")).perform(click());
         onView(withText("OK")).perform(click());
         onView(withId(R.id.add_time)).perform(click());
-        onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(14, 0));
+        onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(14, 00));
         onView(withText("OK")).perform(click());
         onView(withId(R.id.add_duration)).perform(click());
         onView(withId(R.id.picker_hour)).perform(new GeneralSwipeAction(Swipe.SLOW, GeneralLocation.BOTTOM_CENTER, GeneralLocation.TOP_CENTER, Press.FINGER));
         onView(withText("OK")).perform(click());
         onView(withId(R.id.add_delegates)).perform(click());
-        onView(withId(R.id.add_delegates)).perform(clearText(), typeText("pat"));
-        onView(withText("Patrick")).inRoot(RootMatchers.isPlatformPopup()).perform(click());
+        onView(withId(R.id.add_delegates)).perform(clearText(), typeText("car"));
+        onView(withText("Caroline")).inRoot(RootMatchers.isPlatformPopup()).perform(click());
         onView(withId(R.id.add_meeting_layout)).perform(swipeUp());
         onView(withId(R.id.add_button)).perform(click());
         // Then : the button was clickable and there is 1 more meeting in the list
-        onView(withId(R.id.list_meetings)).check(withItemCount(ITEMS_COUNT+1));
+        onView(withId(R.id.list_meetings)).check(withItemCount(5));
     }
 
     /**
@@ -221,8 +217,8 @@ public class MainListTest {
         onView(withId(R.id.picker_hour)).perform(new GeneralSwipeAction(Swipe.SLOW, GeneralLocation.BOTTOM_CENTER, GeneralLocation.TOP_CENTER, Press.FINGER));
         onView(withText("OK")).perform(click());
         onView(withId(R.id.add_delegates)).perform(click());
-        onView(withId(R.id.add_delegates)).perform(clearText(), typeText("pat"));
-        onView(withText("Patrick")).inRoot(RootMatchers.isPlatformPopup()).perform(click());
+        onView(withId(R.id.add_delegates)).perform(clearText(), typeText("car"));
+        onView(withText("Caroline")).inRoot(RootMatchers.isPlatformPopup()).perform(click());
         onView(withId(R.id.add_meeting_layout)).perform(swipeUp());
         onView(withId(R.id.add_button)).perform(click());
         // Then : the button was clickable and an error message is display
@@ -234,9 +230,9 @@ public class MainListTest {
      */
     @Test
     public void MeetingList_onMeetingClick_shouldOpenDetailActivity() {
-        // When perform a click on a meeting
+        //        // When perform a click on a meeting
         onView(allOf (withId(R.id.list_meetings), isDisplayed()))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(positionTest, new MeetingViewAction()));
+                .perform(RecyclerViewActions.actionOnItemAtPosition(positionTest, new DetailMeetingViewAction()));
         // Then : the view went to DetailActivity
         onView(withId(R.id.detail_meeting)).check(matches(isDisplayed()));
     }
@@ -248,9 +244,9 @@ public class MainListTest {
     public void MeetingList_onDetailOpen_shouldDisplayMeetingSubject() {
         // When perform a click on a meeting
         onView(allOf (withId(R.id.list_meetings), isDisplayed()))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(positionTest, new MeetingViewAction()));
+                .perform(RecyclerViewActions.actionOnItemAtPosition(positionTest, new DetailMeetingViewAction()));
         String meetingSubject = service.getMeetings().get(positionTest).getName();
-        // Then : the subject field is the subject of the meeting
-        onView(withId(R.id.detail_subject)).check(matches(withText(meetingSubject)));
+         // Then : the subject field is the subject of the meeting
+        onView(allOf(withId(R.id.detail_subject), withText(meetingSubject))).check(matches(withText(meetingSubject)));
     }
 }

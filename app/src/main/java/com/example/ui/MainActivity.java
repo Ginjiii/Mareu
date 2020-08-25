@@ -181,7 +181,6 @@ public class MainActivity extends AppCompatActivity{
         startActivity(detailActivityIntent);
     }
 
-
     // List the rooms in strings for the singleChoicePicker
     public String [] listRoomsInStrings() {
         String [] list = new String [mApiService.getRooms().size()];

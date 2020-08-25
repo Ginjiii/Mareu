@@ -46,12 +46,12 @@ public class MeetingListRecyclerViewAdapter extends RecyclerView.Adapter<Meeting
         String meetingInfo = meeting.getName()+" - "+ DateFormat.format("HH:mm", meeting.getBeginTime()).toString()+" - "+meeting.getLocation().getRoom();
         holder.mMeetingInfo.setText(meetingInfo);
         // Avatar color
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             holder.mMeetingAvatar.setColorFilter(new BlendModeColorFilter(meeting.getAvatarColor(), BlendMode.SRC_IN));
         } else {
             holder.mMeetingAvatar.setColorFilter(meeting.getAvatarColor() , PorterDuff.Mode.SRC_IN);
         }
-        holder.mMeetingDate.setText(DateFormat.format("dd/MM", meeting.getBeginTime().getTime()).toString());
 
         // Delegate
         String delegates = "";
@@ -59,8 +59,6 @@ public class MeetingListRecyclerViewAdapter extends RecyclerView.Adapter<Meeting
             delegates += delegate.getEmail() + " ";
         }
         holder.mDelegatesList.setText(delegates);
-        // Date in the avatar
-        holder.mMeetingDate.setText(DateFormat.format("dd/MM", meeting.getBeginTime().getTime()).toString());
 
         // Delete icon click listener
         holder.mDeleteButton.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +87,6 @@ public class MeetingListRecyclerViewAdapter extends RecyclerView.Adapter<Meeting
     static class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView mMeetingAvatar ;
-        TextView mMeetingDate;
         TextView mMeetingInfo;
         TextView mDelegatesList;
         ImageButton mDeleteButton;
@@ -97,7 +94,6 @@ public class MeetingListRecyclerViewAdapter extends RecyclerView.Adapter<Meeting
         ViewHolder(View view) {
             super(view);
             mMeetingAvatar = view.findViewById(R.id.item_list_avatar);
-            mMeetingDate = view.findViewById(R.id.item_list_date);
             mMeetingInfo = view.findViewById(R.id.item_list_info);
             mDelegatesList = view.findViewById(R.id.item_list_delegate);
             mDeleteButton = view.findViewById(R.id.item_list_delete_button);

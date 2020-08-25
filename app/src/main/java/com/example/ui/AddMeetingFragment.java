@@ -1,5 +1,6 @@
 package com.example.ui;
 
+        import android.annotation.SuppressLint;
         import android.app.DatePickerDialog;
         import android.app.TimePickerDialog;
         import android.content.DialogInterface;
@@ -290,6 +291,7 @@ public class AddMeetingFragment extends AppCompatActivity implements DialogNumbe
     }
 
     // Function to check if meetings overlap
+    @SuppressLint("StringFormatInvalid")
     public boolean checkMeetingAvailability() {
         boolean available = true;
 

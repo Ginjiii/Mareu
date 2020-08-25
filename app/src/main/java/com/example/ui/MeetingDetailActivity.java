@@ -28,6 +28,8 @@ public class MeetingDetailActivity extends AppCompatActivity {
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_detail_meeting);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
             mAvatarImageView = findViewById(R.id.detail_meeting);
             mSubjectTextView = findViewById(R.id.detail_subject);
             mDateTextView = findViewById(R.id.detail_date);

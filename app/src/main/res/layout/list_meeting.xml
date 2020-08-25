@@ -10,6 +10,7 @@
         android:id="@+id/item_list_avatar"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        app:layout_constraintVertical_weight="1"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
@@ -18,20 +19,9 @@
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_brightness_1_24"/>
 
-
-    <TextView
-        android:id="@+id/item_list_date"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:text="@string/date"
-        android:textColor="#020000"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/item_list_avatar"
-        app:layout_constraintStart_toStartOf="@id/item_list_avatar" />
 
     <TextView
         android:id="@+id/item_list_info"
